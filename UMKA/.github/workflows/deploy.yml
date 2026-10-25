@@ -30,15 +30,17 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
+        working-directory: ./UMKA
         run: npm install --legacy-peer-deps
 
       - name: Build TypeScript project
+        working-directory: ./UMKA
         run: npm run build
 
       - name: Upload build
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./UMKA/dist
 
   deploy:
     needs: build
